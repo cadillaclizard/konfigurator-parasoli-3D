@@ -1,0 +1,175 @@
+<div class="container-full">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Wybierz opcje zamówienia</h1>
+				<h4>Określ ilość parasoli jakie chcesz zamówić, opcję transportu i wybierz podstawę parasola</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 count">
+				<h2>ilość parasoli:</h2>
+				<div class="input">
+					<svg ng-click="vm.deliveryOptions.count = vm.deliveryOptions.count - 1" ng-click-animate x="30px" y="30px"
+						width="27.9px" height="27.9px" viewBox="0 0 27.9 27.9" enable-background="new 0 0 27.9 27.9" xml:space="preserve">
+						<path d="M6,14.6c-0.4,0-0.7-0.3-0.7-0.7c0-0.4,0.3-0.7,0.7-0.7h16c0.4,0,0.7,0.3,0.7,0.7c0,0.4-0.3,0.7-0.7,0.7H6z M14,1.2
+							C6.9,1.2,1.2,6.9,1.2,14S6.9,26.7,14,26.7S26.7,21,26.7,14S21,1.2,14,1.2 M14,0c7.7,0,14,6.3,14,14s-6.3,14-14,14
+							c-7.7,0-14-6.3-14-14S6.3,0,14,0L14,0z"/>
+					</svg>
+					<input type="number" ng-model="vm.deliveryOptions.count">
+					<svg ng-click="vm.deliveryOptions.count = vm.deliveryOptions.count + 1" ng-click-animate x="30px" y="30px"
+						width="27.9px" height="27.9px" viewBox="0 0 27.9 27.9" enable-background="new 0 0 27.9 27.9" xml:space="preserve">
+						<path d="M22.6,14c0,0.4-0.3,0.7-0.7,0.7h-7.3V22c0,0.4-0.3,0.7-0.7,0.7s-0.7-0.3-0.7-0.7v-7.3H6c-0.4,0-0.7-0.3-0.7-0.7
+							s0.3-0.7,0.7-0.7h7.3V6c0-0.4,0.3-0.7,0.7-0.7s0.7,0.3,0.7,0.7v7.3H22C22.3,13.3,22.6,13.6,22.6,14z M14,1.2c7,0,12.8,5.7,12.8,12.8
+							S21,26.7,14,26.7S1.2,21,1.2,14S6.9,1.2,14,1.2 M14,0C6.3,0,0,6.3,0,14s6.3,14,14,14s14-6.3,14-14S21.7,0,14,0L14,0z"/>
+					</svg>
+				</div>
+				<div class="prices">
+					<span>Ilość parasoli wpływa na cenę przesyłki:</span>
+					<div class="content">
+						<div class="titles">
+							<span>1-2 parasoli:</span>
+							<span>3-10 parasoli:</span>
+						</div>
+						<div class="values">
+							<span>+{{ vm.model.price.delivery[0] }},00 PLN</span>
+							<span>+{{ vm.model.price.delivery[1] }},00 PLN</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 bases">
+				<h2>dodaj podstawę parasola</h2>
+				<div class="input" ng-class="{ disabled: !vm.deliveryOptions.base }">
+					<svg ng-click="vm.deliveryOptions.baseCount = vm.deliveryOptions.baseCount - 1" ng-click-animate x="30px" y="30px"
+						width="27.9px" height="27.9px" viewBox="0 0 27.9 27.9" enable-background="new 0 0 27.9 27.9" xml:space="preserve">
+						<path d="M6,14.6c-0.4,0-0.7-0.3-0.7-0.7c0-0.4,0.3-0.7,0.7-0.7h16c0.4,0,0.7,0.3,0.7,0.7c0,0.4-0.3,0.7-0.7,0.7H6z M14,1.2
+							C6.9,1.2,1.2,6.9,1.2,14S6.9,26.7,14,26.7S26.7,21,26.7,14S21,1.2,14,1.2 M14,0c7.7,0,14,6.3,14,14s-6.3,14-14,14
+							c-7.7,0-14-6.3-14-14S6.3,0,14,0L14,0z"/>
+					</svg>
+					<input type="number" ng-model="vm.deliveryOptions.baseCount">
+					<svg ng-click="vm.deliveryOptions.baseCount = vm.deliveryOptions.baseCount + 1" ng-click-animate x="30px" y="30px"
+						width="27.9px" height="27.9px" viewBox="0 0 27.9 27.9" enable-background="new 0 0 27.9 27.9" xml:space="preserve">
+						<path d="M22.6,14c0,0.4-0.3,0.7-0.7,0.7h-7.3V22c0,0.4-0.3,0.7-0.7,0.7s-0.7-0.3-0.7-0.7v-7.3H6c-0.4,0-0.7-0.3-0.7-0.7
+							s0.3-0.7,0.7-0.7h7.3V6c0-0.4,0.3-0.7,0.7-0.7s0.7,0.3,0.7,0.7v7.3H22C22.3,13.3,22.6,13.6,22.6,14z M14,1.2c7,0,12.8,5.7,12.8,12.8
+							S21,26.7,14,26.7S1.2,21,1.2,14S6.9,1.2,14,1.2 M14,0C6.3,0,0,6.3,0,14s6.3,14,14,14s14-6.3,14-14S21.7,0,14,0L14,0z"/>
+					</svg>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 umbrella-base"  ng-class="{ active: vm.deliveryOptions.base == null }">
+						<div ng-click="vm.deliveryOptions.base = base">
+							<img ng-src="bin/img/podstawy/podstawa_BRAK.svg">
+							<span>Bez podstawy</span>
+						</div>
+						<span>0 PLN</span>
+					</div>
+					<div class="col-xs-6 umbrella-base" ng-repeat="base in vm.model.bases" ng-class="{ active: vm.deliveryOptions.base == base }">
+						<div ng-click="vm.deliveryOptions.base = base">
+							<img ng-src="{{ base.url }}">
+							<span>{{ base.name }}</span>
+						</div>
+						<span ng-if="base.price > 0" class="red">{{ base.price.toFixed(2) }} PLN</span>
+						<span ng-if="base.price == 0">0 PLN</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 radios">
+				<h2>forma odbioru</h2>
+				<div class="radio">
+					<input type="radio" id="personal" name="order-option" ng-model="vm.deliveryOptions.delivery" value="personal"/>
+					<label for="personal">
+						<div class="radio-icon">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+								<path d="M39.2,8.4L18.7,34c-0.7,0.7-1.4,1.4-2.4,1.4H16c-0.7,0-1.7-0.3-2.7-1L0.5,23.1c-0.7-1-0.7-2.4,0-3.4c1-0.7,2.4-0.7,3.4,0
+									l12,10.6l3.8-4.5c0-0.3,0-0.3,0-0.3L35.8,5.3c0.7-0.3,1-0.7,1.7-0.7s1,0,1.7,0.7l0,0C40.3,6,40.3,7.3,39.2,8.4z"/>
+							</svg>
+						</div>
+						<svg version="1.1" id="Room_Service" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+							y="0px" width="30px" height="15px" viewBox="0 0 30 15" enable-background="new 0 0 30 15" xml:space="preserve">
+							<g>
+								<g>
+									<g>
+										<path d="M4.5,12h-4C0.2,12,0,11.8,0,11.5v-11c0-0.1,0.1-0.3,0.1-0.4C0.2,0.1,0.4,0,0.5,0c1,0,5.8,0.1,6.8,1.1
+											c0.1,0.1,0.2,0.3,0.2,0.4C7.2,4.8,5.1,11.4,5,11.7C4.9,11.9,4.7,12,4.5,12z M1,11h3.1c0.4-1.4,2-6.5,2.3-9.3C5.6,1.3,3,1.1,1,1
+											V11z"/>
+										<path d="M16.7,15c-0.8,0-1.5-0.2-2.5-0.6L4.8,11c-0.3-0.1-0.4-0.4-0.3-0.6S4.9,9.9,5.2,10l9.4,3.4c2.3,0.9,2.6,0.9,7.8-1.2
+											l6.5-3.4c-0.8-0.9-2.2-1.2-3.4-0.9l-4.8,1.2C20.4,9.2,20.1,9,20,8.7c-0.1-0.3,0.1-0.5,0.4-0.6l4.8-1.2c1.7-0.4,3.9,0.1,4.8,1.8
+											c0.1,0.2,0,0.5-0.2,0.7l-7,3.7C19.5,14.4,18,15,16.7,15z"/>
+										<path d="M17.9,9.7c-0.3,0-0.6,0-0.8-0.1l-5.4-1.1c-0.3-0.1-0.4-0.3-0.4-0.6s0.3-0.5,0.6-0.4l5.4,1.1c0.5,0.1,1,0.1,1.4,0L20,8.2
+											C19.9,7,19.4,6.4,17.9,6l-11-2.5C6.6,3.4,6.5,3.2,6.5,2.9c0.1-0.3,0.3-0.4,0.6-0.4l11,2.5c2,0.5,2.9,1.6,2.9,3.4v0.2
+											c0,0.2-0.2,0.4-0.4,0.5l-1.7,0.4C18.6,9.6,18.3,9.7,17.9,9.7z M20.5,8.6L20.5,8.6L20.5,8.6z"/>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<span>
+							odbiór osobisty<br>
+							<span class="black">0 PLN</span>
+						</span>
+					</label>
+				</div>
+				<div class="radio">
+					<input type="radio" id="poland" name="order-option" ng-model="vm.deliveryOptions.delivery" value="poland"/>
+					<label for="poland">
+						<div class="radio-icon">
+							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+								<path d="M39.2,8.4L18.7,34c-0.7,0.7-1.4,1.4-2.4,1.4H16c-0.7,0-1.7-0.3-2.7-1L0.5,23.1c-0.7-1-0.7-2.4,0-3.4c1-0.7,2.4-0.7,3.4,0
+									l12,10.6l3.8-4.5c0-0.3,0-0.3,0-0.3L35.8,5.3c0.7-0.3,1-0.7,1.7-0.7s1,0,1.7,0.7l0,0C40.3,6,40.3,7.3,39.2,8.4z"/>
+							</svg>
+						</div>
+						<svg version="1.1" id="Shipping_box" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+							y="0px" width="29px" height="30px" viewBox="0 0 29 30" enable-background="new 0 0 29 30" xml:space="preserve">
+							<g>
+								<path d="M14.5,30c0,0-0.1,0-0.1,0l-14-3.8C0.2,26.1,0,25.9,0,25.7V4.3c0-0.2,0.2-0.4,0.4-0.5l14-3.8c0.1,0,0.2,0,0.3,0l14,3.8
+									C28.8,3.9,29,4.1,29,4.3v21.4c0,0.2-0.2,0.4-0.4,0.5l-14,3.8C14.6,30,14.5,30,14.5,30z M1,25.3L14.5,29L28,25.3V4.7L14.5,1L1,4.7
+									V25.3z"/>
+								<path d="M14.5,30c-0.3,0-0.5-0.2-0.5-0.5v-29C14,0.2,14.2,0,14.5,0S15,0.2,15,0.5v29C15,29.8,14.8,30,14.5,30z"/>
+								<path d="M9.5,25C9.2,25,9,24.8,9,24.5v-4C9,20.2,9.2,20,9.5,20s0.5,0.2,0.5,0.5v4C10,24.8,9.8,25,9.5,25z"/>
+								<path d="M11.5,23c-0.1,0-0.3,0-0.4-0.1l-1.6-1.6l-1.6,1.6c-0.2,0.2-0.5,0.2-0.7,0s-0.2-0.5,0-0.7l2-2c0.2-0.2,0.5-0.2,0.7,0l2,2
+									c0.2,0.2,0.2,0.5,0,0.7C11.8,23,11.6,23,11.5,23z"/>
+								<path d="M17.5,25c-0.2,0-0.4-0.1-0.5-0.4c-0.1-0.3,0.1-0.5,0.3-0.6l3.5-1c0.3-0.1,0.5,0.1,0.6,0.3c0.1,0.3-0.1,0.5-0.3,0.6l-3.5,1
+									C17.6,25,17.5,25,17.5,25z"/>
+								<path d="M23.5,16c-0.1,0-0.2,0-0.3-0.1L22,15.1l-1.2,0.8c-0.2,0.1-0.5,0.1-0.6-0.1l-1-1c-0.1-0.1-0.1-0.2-0.1-0.4V2
+									c0-0.3,0.2-0.5,0.5-0.5S20,1.7,20,2v12.3l0.6,0.6l1.2-0.8c0.2-0.1,0.4-0.1,0.6,0l1.2,0.8l0.6-0.6V3.5C24,3.2,24.2,3,24.5,3
+									S25,3.2,25,3.5v11c0,0.1-0.1,0.3-0.1,0.4l-1,1C23.8,16,23.6,16,23.5,16z"/>
+								<path d="M8.5,16c-0.1,0-0.2,0-0.3-0.1L7,15.1l-1.2,0.8C5.6,16,5.3,16,5.1,15.9l-1-1C4.1,14.8,4,14.6,4,14.5v-11C4,3.2,4.2,3,4.5,3
+									S5,3.2,5,3.5v10.8l0.6,0.6l1.2-0.8c0.2-0.1,0.4-0.1,0.6,0l1.2,0.8L9,14.3V2c0-0.3,0.2-0.5,0.5-0.5S10,1.7,10,2v12.5
+									c0,0.1-0.1,0.3-0.1,0.4l-1,1C8.8,16,8.6,16,8.5,16z"/>
+							</g>
+						</svg>
+						<span>
+							przesyłka kurierska w Polsce<br>
+							<span class="red">+{{ vm.model.price.delivery[vm.deliveryOptions.count > 2 ? 1 : 0].toFixed(2) }} PLN</span>
+						</span>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container-full">
+		<div class="row">
+			<div class="col-xs-12">
+				<a class="button arrow-left" ui-sref="customize">
+					Wróć
+					<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path d="M30.9,20L11.3,39.7C11,39.9,10.7,40,10.4,40s-0.7-0.1-0.9-0.3c-0.3-0.2-0.4-0.5-0.4-0.9s0.1-0.7,0.3-0.9l17.8-17.8L9.4,2.2
+						C9.2,2,9.1,1.6,9.1,1.3s0.1-0.7,0.3-0.9c0.3-0.3,0.7-0.4,1-0.4l0,0c0.3,0,0.7,0.1,0.9,0.3L30.9,20z"/>
+					</svg>
+				</a>
+				<a class="button" ui-sref="order-form">
+					Dalej
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path d="M30.9,20L11.3,39.7C11,39.9,10.7,40,10.4,40s-0.7-0.1-0.9-0.3c-0.3-0.2-0.4-0.5-0.4-0.9s0.1-0.7,0.3-0.9l17.8-17.8L9.4,2.2
+						C9.2,2,9.1,1.6,9.1,1.3s0.1-0.7,0.3-0.9c0.3-0.3,0.7-0.4,1-0.4l0,0c0.3,0,0.7,0.1,0.9,0.3L30.9,20z"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>

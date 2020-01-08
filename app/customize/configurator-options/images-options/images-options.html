@@ -1,0 +1,70 @@
+<h4 class="important">Zewnętrzne pliki graficzne</h4>
+<p>Użyj plików graficznych aby stworzyć kreację.<br>Wgrywać można jedynie pliki .JPG, .PNG i .SVG</p>
+<label for="file-select" class="button">Wgraj plik</label>
+<input id="file-select" type="file" multiple accept="image/png, image/jpeg, image/jpg, image/svg+xml">
+<hr ng-if="vm.imagesCount > 0">
+<h4 ng-if="vm.imagesCount > 0">Wgrane pliki:</h4>
+<div class="images">
+	<div class="image" ng-repeat="(key, image) in vm.images" ng-class="{ active: vm.selectedImage == image }" ng-if="!image.textData">
+		<div ng-click="::vm.selectImage(image)">
+			<img ng-src="{{ ::image.url }}">
+		</div>
+		<span class="remove" ng-click="::vm.removeImage(image)">usuń</span>
+	</div>
+</div>
+<hr ng-if="!!vm.selectedImage">
+<h4 ng-if="!!vm.selectedImage">Powtarzaj grafikę:</h4>
+<div ng-if="!!vm.selectedImage" class="image-options">
+	<div class="once" ng-class="{ active: vm.selectedImage.repetition == 'once' }" ng-click="vm.changeSelectedImageRepetition('once')">
+		<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="30px" y="30px"
+			viewBox="0 0 158.7 158.7" enable-background="new 0 0 158.7 158.7" xml:space="preserve">
+			<path fill="#AD071F" d="M155.3,45.9L112.9,3.5L111.4,2h-2.1H49.4h-2.1l-1.5,1.5L3.5,45.9L2,47.3v2.1v59.9v2.1l1.5,1.5l42.4,42.4
+				l1.5,1.5h2.1h59.9h2.1l1.5-1.5l42.4-42.4l1.5-1.5v-2.1V49.4v-2.1L155.3,45.9z M150.6,48.2l-43.7,18.1L92.3,51.7l17.9-43.8
+				L150.6,48.2z M79.4,75.4l-9.3-22.2h18.4L79.4,75.4z M91.3,54.3l13.1,13.1l-22.3,9.2L91.3,54.3z M76.6,76.6l-22.2-9.2l13-13
+				L76.6,76.6z M75.4,79.4l-22.3,9.2V70.1L75.4,79.4z M76.6,82.1l-9.2,22.3l-13-13L76.6,82.1z M79.4,83.3l9.2,22.2H70.1L79.4,83.3z
+				M82.1,82.1l22.3,9.2l-13.1,13.1L82.1,82.1z M83.3,79.4l22.3-9.2v18.4L83.3,79.4z M109.3,7L109.3,7L109.3,7L109.3,7z M107.4,7
+				L89.5,50.7H69L50.9,7H107.4z M48.1,8.3l18.2,43.6L51.8,66.3L8.2,48.2L48.1,8.3z M7,49.4l0.3-0.3L7,49.8V49.4z M7,50.9l43.7,18.1
+				v20.6L7,107.8V50.9z M7,109.3v-0.1V109.3L7,109.3z M48.2,150.6L8.2,110.5l43.6-18.1l14.5,14.5L48.2,150.6z M69.1,108.1h20.5l18,43.7
+				H51L69.1,108.1z M110.4,150.6l-18-43.7l14.5-14.5l43.6,18.1L110.4,150.6z M151.7,107.7l-43.7-18.1V69.1L151.7,51V107.7z"/>
+			<path fill="#E30613" d="M112.2,154.6l-21.6-48.7l14.6-15l48.7,20.2L112.2,154.6z"/>
+			<path fill="#FFFFFF" d="M68.5,105.5L53.2,90.2V68.5l15.3-15.3h21.7l15.3,15.3v21.7l-15.3,15.3H68.5z"/>
+		</svg>
+		<span>na jednym brycie parasola</span>
+	</div>
+	<div class="half" ng-class="{ active: vm.selectedImage.repetition == 'half' }" ng-click="vm.changeSelectedImageRepetition('half')">
+		<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="30px" y="30px"
+			viewBox="0 0 158.7 158.7" enable-background="new 0 0 158.7 158.7" xml:space="preserve">
+		<path fill="#E30613" d="M109.4,3.8L89.4,52l-21.1-0.6L48.8,3.3L109.4,3.8z M155.5,47.1l-49.2,20.5l0,22.2l48.7,20.8L155.5,47.1z
+			M109.4,155.6l-19.5-49l-21,0l-19.8,49.4L109.4,155.6z M2.9,111.1l49-20.5l0.3-23.3L2.9,46.1L2.9,111.1z"/>
+		<path fill="#AD071F" d="M155.3,45.9L112.9,3.5L111.4,2h-2.1H49.4h-2.1l-1.5,1.5L3.5,45.9L2,47.3v2.1v59.9v2.1l1.5,1.5l42.4,42.4
+			l1.5,1.5h2.1h59.9h2.1l1.5-1.5l42.4-42.4l1.5-1.5v-2.1V49.4v-2.1L155.3,45.9z M108.1,89.6V69.1L151.7,51v56.7L108.1,89.6z M7,107.8
+			V50.9l43.7,18.1v20.6L7,107.8z M53.2,70.1l22.3,9.2l-22.3,9.2V70.1z M91.3,54.3l13.1,13.1l-22.3,9.2L91.3,54.3z M79.4,75.4
+			l-9.3-22.2h18.4L79.4,75.4z M89.5,50.7H69L50.9,7h56.5L89.5,50.7z M76.6,76.6l-22.2-9.2l13-13L76.6,76.6z M76.6,82.1l-9.2,22.3
+			l-13-13L76.6,82.1z M79.4,83.3l9.2,22.2H70.1L79.4,83.3z M69.1,108.1h20.5l18,43.7H51L69.1,108.1z M82.1,82.1l22.3,9.2l-13.1,13.1
+			L82.1,82.1z M83.3,79.4l22.3-9.2v18.4L83.3,79.4z M150.6,48.2l-43.7,18.1L92.3,51.7l17.9-43.8L150.6,48.2z M109.3,7L109.3,7L109.3,7
+			L109.3,7z M48.1,8.3l18.2,43.6L51.8,66.3L8.2,48.2L48.1,8.3z M7.3,49.1L7,49.8v-0.5L7.3,49.1z M7,109.2l0.1,0.2L7,109.3V109.2z
+			M8.2,110.5l43.6-18.1l14.5,14.5l-18.1,43.7L8.2,110.5z M110.4,150.6l-18-43.7l14.5-14.5l43.6,18.1L110.4,150.6z"/>
+		<path fill="#FFFFFF" d="M68.5,105.5L53.2,90.2V68.5l15.3-15.3h21.7l15.3,15.3v21.7l-15.3,15.3H68.5z"/>
+		</svg>
+		<span>na co drugim brycie parasola</span>
+	</div>
+	<div class="full" ng-class="{ active: vm.selectedImage.repetition == 'all' }" ng-click="vm.changeSelectedImageRepetition('all')">
+		<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="30px" y="30px"
+			viewBox="0 0 158.7 158.7" enable-background="new 0 0 158.7 158.7" xml:space="preserve">
+			<path fill="#E30613" d="M109.4,3.8L89.4,52l-21.1-0.6L48.8,3.3L109.4,3.8z M110.9,4.1L92,52.5l14.8,15l47.7-21.1L110.9,4.1z
+				M155.5,47.1l-49.2,20.5l0,22.2l48.7,20.8L155.5,47.1z M109.4,155.6l-19.5-49l-21,0l-19.8,49.4L109.4,155.6z M153.9,111.1
+				l-48.7-20.2l-14.6,15l21.6,48.7L153.9,111.1z M48.2,153.9l19.3-47.8L52.3,90.7l-48,19.2L48.2,153.9z M2.9,111.1l49-20.5l0.3-23.3
+				L2.9,48.1L2.9,111.1z M4.1,47.2l48.1,21l15.8-16.4L47.4,4.5L4.1,47.2z"/>
+			<path fill="#720000" d="M155.3,45.9L112.9,3.5L111.4,2h-2.1H49.4h-2.1l-1.5,1.5L3.5,45.9L2,47.3v2.1v59.9v2.1l1.5,1.5l42.4,42.4
+				l1.5,1.5h2.1h59.9h2.1l1.5-1.5l42.4-42.4l1.5-1.5v-2.1V49.4v-2.1L155.3,45.9z M108.1,89.6V69.1L151.7,51v56.7L108.1,89.6z M7,107.8
+				V50.9l43.7,18.1v20.6L7,107.8z M53.2,70.1l22.3,9.2l-22.3,9.2V70.1z M91.3,54.3l13.1,13.1l-22.3,9.2L91.3,54.3z M79.4,75.4
+				l-9.3-22.2h18.4L79.4,75.4z M89.5,50.7H69L50.9,7h56.5L89.5,50.7z M76.6,76.6l-22.2-9.2l13-13L76.6,76.6z M76.6,82.1l-9.2,22.3
+				l-13-13L76.6,82.1z M79.4,83.3l9.2,22.2H70.1L79.4,83.3z M69.1,108.1h20.5l18,43.7H51L69.1,108.1z M82.1,82.1l22.3,9.2l-13.1,13.1
+				L82.1,82.1z M83.3,79.4l22.3-9.2v18.4L83.3,79.4z M150.6,48.2l-43.7,18.1L92.3,51.7l17.9-43.8L150.6,48.2z M109.3,7L109.3,7L109.3,7
+				L109.3,7z M48.1,8.3l18.2,43.6L51.8,66.3L8.2,48.2L48.1,8.3z M7.3,49.1L7,49.8v-0.5L7.3,49.1z M7,109.2l0.1,0.2L7,109.3V109.2z
+				M8.2,110.5l43.6-18.1l14.5,14.5l-18.1,43.7L8.2,110.5z M110.4,150.6l-18-43.7l14.5-14.5l43.6,18.1L110.4,150.6z"/>
+			<path fill="#FFFFFF" d="M68.5,105.5L53.2,90.2V68.5l15.3-15.3h21.7l15.3,15.3v21.7l-15.3,15.3H68.5z"/>
+		</svg>
+		<span>na każdym brycie parasola</span>
+	</div>
+</div>

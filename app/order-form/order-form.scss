@@ -1,0 +1,251 @@
+@import "lib";
+
+order-form > .container-full {
+	overflow-y: auto;
+
+	> .container {
+		max-height: calc(100% - 95px);
+
+		> .row {
+			width: 100%;
+
+			&:last-child {
+				flex: 1;
+				display: flex;
+				align-items: stretch;
+				padding-bottom: 30px;
+			}
+
+			> div { padding: 0 25px; }
+
+			.main-column {
+				&:nth-child(1) > div { float: right; }
+
+				> div {
+					width: 370px;
+
+					.line {
+						height: 50px;
+						display: flex;
+						align-items: center;
+						margin: 0;
+
+						&.triple { height: 150px; }
+						&.textarea { height: 252px; }
+						&.checkbox { justify-content: flex-start; }
+						&.delivery-adress {
+							align-items: flex-start;
+
+							.adress > span {
+								width: 100%;
+								line-height: 22px;
+
+								&.red {
+									text-transform: uppercase;
+									color: $red;
+									font-weight: 600;
+								}
+							}
+						}
+
+						&.files {
+							flex-direction: column;
+							align-items: flex-start;
+							height: auto;
+
+							> .additional-files {
+								flex: 1;
+								background: transparent;
+								border: 1px dashed $gray-border;
+								border-radius: 5px;
+								width: 100%;
+								padding: 15px 10px;
+								overflow-x: auto;
+								display: flex;
+								flex-direction: column;
+								align-items: center;
+								height: 252px;
+								overflow-y: auto;
+
+								> .info {
+									width: 100%;
+									margin-bottom: 10px;
+
+									p {
+										font-size: 14px;
+										margin: 0;
+
+										&.br { margin-bottom: 5px; }
+									}
+								}
+
+								> .button {
+									background: transparent;
+									color: $blue !important;
+									border: 1px solid $gray-border;
+									margin: 10px 0;
+
+									&:hover { background: $gray-border; }
+								}
+
+								> div:not(.info) {
+									display: flex;
+									height: 30px;
+									min-height: 30px;
+									width: 100%;
+									border-bottom: 1px solid $gray-border;
+									margin-bottom: 10px;
+
+									> svg {
+										height: 20px;
+										width: 20px;
+
+										path { fill: $red; }
+									}
+
+									> span { 
+										flex: 1;
+										overflow: hidden;
+										text-overflow: ellipsis;
+										padding: 0 10px;
+										white-space: nowrap;
+									}
+
+									> a {
+										color: $blue;
+										width: auto;
+										cursor: pointer;
+									}
+								}
+							}
+
+							> input { display: none }
+						}
+
+						h2 {
+							font-size: 16px;
+							text-transform: uppercase;
+							margin: 0;
+							line-height: 35px;
+							font-weight: 500;
+						}
+
+						&.disabled span {
+							color: #999999;
+							transition: all .25s;
+						}
+
+						span {
+							width: 100px;
+							display: block;
+							font-weight: 500;
+						}
+
+						input {
+							width: 370px - 100px;
+							background: white;
+							border-radius: 5px;
+							outline: none !important;
+							padding: 0 15px;
+							height: 35px;
+							transition: all .25s;
+
+							&:first-child {
+								margin-left: 100px;
+							}
+
+							&:not(:only-of-type) {
+								width: (370px - 100px) / 2;
+							}
+
+							&:nth-of-type(2) {
+								margin-left: 10px;
+								width: (370px - 100px) / 2 - 10px;
+							}
+
+							&[disabled] {
+								background: #f8f8f8;
+								border-color: #e5e5e5 !important;
+								color: #999999;
+							}
+
+							&[type="checkbox"] {
+								display: none;
+
+								&:checked + label {
+									border-color: $red;
+
+									> svg path { fill: $red; }
+
+									.checkbox-icon {
+										background: $red;
+										border-color: $red;
+
+										> svg { opacity: 1; }
+									}
+								}
+
+								+ label {
+									padding: 0;
+									display: flex;
+									width: 100%;
+									align-items: center;
+
+									span { width: 100%; }
+
+									.checkbox-icon {
+										min-height: 20px;
+										min-width: 20px;
+										height: 20px;
+										width: 20px;
+										background: $white;
+										border-radius: 3px;
+										border: 1px solid $gray-border;
+										transition: all .25s;
+										margin-right: 20px;
+
+										> svg {
+											display: block;
+											opacity: 0;
+											height: 100%;
+											width: 100%;
+											padding: 2px;
+											transition: all .25s;
+
+											path { fill: $white; }
+										}
+									}
+								}
+							}
+						}
+
+						textarea {
+							width: 100%;
+							height: 100%;
+
+							background: white;
+							border-radius: 5px;
+							outline: none !important;
+							padding: 10px 15px;
+							resize: none;
+						}
+
+						input, textarea {
+							border: 1px solid $gray-border;
+
+							&.ng-dirty {
+								&.ng-invalid {
+									border-color: $red;
+								}
+
+								&.ng-valid {
+									border-color: $green;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+<header>
+	<div class="container-full">
+		<div class="row">
+			<div class="col-xs-12 heading">
+				<a href="http://perfecta.pl/"><img src="bin/img/logo.png"></a>
+				<div class="stages" ng-if="vm.$state.current.name != 'preview' && vm.$state.current.name != 'confirmation'">
+					<a ui-sref="select-model" ng-class="{ active: vm.$state.current.name == 'select-model'}">1. Model</a>
+					<a ui-sref="customize" ng-class="{ active: vm.$state.current.name == 'customize'}">2. Personalizacja</a>
+					<a ui-sref="order-options" ng-class="{ active: vm.$state.current.name == 'order-options'}">3. Opcje zamówienia</a>
+					<a ui-sref="order-form" ng-class="{ active: vm.$state.current.name == 'order-form'}">4. Zamówienie</a>
+					<a ui-sref="summary" ng-class="{ active: vm.$state.current.name == 'summary'}">5. Podsumowanie</a>
+				</div>
+				<price ng-if="vm.$state.current.name != 'preview' && vm.$state.current.name != 'confirmation'"></price>
+			</div>
+		</div>
+	</div>
+</header>
+<div ui-view></div>

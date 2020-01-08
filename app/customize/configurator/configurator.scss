@@ -1,0 +1,269 @@
+@import "lib";
+
+configurator {
+	position: relative;
+	user-select: none;
+	overflow: hidden;
+
+	canvas { visibility: hidden; }
+	&.ready canvas { visibility: visible; }
+
+	&.no-controls  {
+		.image-options, .zoom, .move-options {
+			display: none;
+		}
+	}
+
+	> h1 {
+		margin-top: 10px;
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+
+	> .loader {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: $gray-background;
+		z-index: 100;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		pointer-events: none;
+
+		&.ng-leave {
+			opacity: 1;
+			transition: opacity 1s;
+
+			&.ng-leave-active {
+				opacity: 0;
+			}
+		}
+
+		> svg {
+			height: 150px;
+			width: 150px;
+		}
+	}
+
+	> .zoom, > .move-options, > .image-options {
+		position: absolute;
+		right: 25px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 30px;
+	}
+
+	> .zoom, > .move-options {
+		svg { cursor: pointer; }
+		> svg path { fill: $red; }
+	}
+
+	> .image-options {
+		left: 25px;
+		bottom: 25px;
+		right: initial;
+		height: initial;
+
+		> span {
+			left: 0;
+			right: 0;
+			text-align: center;
+			bottom: -20px;
+			position: absolute;
+			font-size: 13px;
+			font-weight: 600;
+		}
+
+		input[type=range] {
+			-webkit-appearance: none;
+			margin: 18px 0;
+			width: 100%;
+		}
+		input[type=range]:focus {
+			outline: none;
+		}
+		input[type=range]::-webkit-slider-runnable-track {
+			width: 100%;
+			height: 4px;
+			cursor: pointer;
+			background: $white;
+			border-radius: 5px;
+			border: 1px solid $red;
+		}
+		input[type=range]::-webkit-slider-thumb {
+			height: 16px;
+			width: 16px;
+			border-radius: 50px;
+			background: $red;
+			cursor: pointer;
+			-webkit-appearance: none;
+			margin-top: -7px;
+		}
+		input[type=range]::-moz-range-track {
+			width: 100%;
+			height: 4px;
+			cursor: pointer;
+			background: $white;
+			border-radius: 5px;
+			border: 1px solid $red;
+		}
+		input[type=range]::-moz-range-thumb {
+			height: 16px;
+			width: 16px;
+			border-radius: 50px;
+			background: $red;
+			cursor: pointer;
+			margin-top: -7px;
+		}
+		input[type=range]::-ms-track {
+			width: 100%;
+			height: 4px;
+			cursor: pointer;
+			background: $white;
+			border-radius: 5px;
+			border: 1px solid $red;
+		}
+		input[type=range]::-ms-thumb {
+			height: 16px;
+			width: 16px;
+			border-radius: 50px;
+			background: $red;
+			cursor: pointer;
+			margin-top: -7px;
+		}
+
+		.rotate-with-mouse {
+			cursor: pointer;
+			border-radius: 50px;
+			overflow: hidden;
+			height: 90px;
+			width: 90px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 10px;
+
+			> svg {
+				height: 90px;
+				width: 90px;
+			}
+		}
+
+		> svg {
+			cursor: pointer;
+			width: 25px;
+			height: 25px;
+
+			&:first-of-type.ng-click { animation: shrink .25s; }
+			&:last-of-type.ng-click { animation: grow .25s; }
+
+			path { fill: $red; }
+		}
+	}
+
+	> .zoom {
+		top: 25px;
+
+		> span.label {
+			left: 0;
+			right: 0;
+			text-align: center;
+			top: -17.5px;
+			position: absolute;
+			font-size: 13px;
+			text-transform: none;
+			color: $gray;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		> span {
+			width: 50px;
+			color: $red;
+			font-size: 18px;
+			font-weight: 600;
+			text-align: center;
+			text-transform: uppercase;
+			margin: 0 10px;
+		}
+
+		> svg {
+			height: 25px;
+			width: 25px;
+
+			&:first-of-type.ng-click { animation: shrink .25s; }
+			&:last-of-type.ng-click { animation: grow .25s; }
+		}
+	}
+
+	> .move-options {
+		bottom: 25px;
+
+		> div.labels {
+			position: absolute;
+			left: -7px;
+			right: -13px;
+			text-align: center;
+			bottom: -20px;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			font-size: 13px;
+			font-weight: 600;
+		}
+
+		&:hover:not(.active) > svg:first-of-type { animation: wiggle 1s; }
+		&:hover.active > svg:last-of-type { animation: rotate 1.5s; }
+		&.active > span:after { transform: translateX(20px); }
+
+		> svg {
+			height: 20px;
+			width: 50px;
+		}
+
+		> span {
+			position: relative;
+			width: 50px;
+			height: 30px;
+			margin: 0 10px;
+			border-radius: 50px;
+			background: $white;
+			border: 1px solid $gray-border;
+			transition: border-color .25s;
+			cursor: pointer;
+
+			&:hover { border-color: $red; }
+
+			&:after {
+				content: "";
+				width: 22px;
+				height: 22px;
+				display: block;
+				margin: 3px;
+				background: $red;
+				border-radius: 50px;
+				transition: transform .25s;
+			}
+
+			> span {
+				position: absolute;
+				top: -25px;
+				border: 1px solid $gray-border;
+				font-size: 9px;
+				border-bottom-width: 2px;
+				left: -10px;
+				right: -10px;
+				margin: auto;
+				display: flex;
+				justify-content: center;
+				width: 50px;
+				background: $white;
+				color: #999999;
+			}
+		}
+	}
+}

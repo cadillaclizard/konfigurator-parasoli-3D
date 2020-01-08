@@ -1,0 +1,31 @@
+customize {
+	> .container-full {
+		height: 100%;
+		display: flex;
+
+		> configurator { flex: 1; }
+	}
+
+	> .modal-window {
+		position: fixed;
+
+		.modal-window-content {
+			height: 180px;
+			width: 300px;
+
+			section {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			footer { flex-direction: row-reverse; }
+			
+			footer p {
+				color: blue;
+				cursor: pointer;
+				display: flex;
+			}
+		}
+	}
+}

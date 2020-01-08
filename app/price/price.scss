@@ -1,0 +1,28 @@
+@import "lib";
+
+price {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	color: $red;
+	font-weight: 500;
+
+	span:first-child {
+		font-size: 15px;
+		margin-bottom: -4px;
+	}
+	span:last-child { font-size: 22px; }
+
+	span.bounce {
+		animation: bounce-price .5s;
+	}
+}
+
+@keyframes bounce-price {
+	0% { transform: translateX(0px); }
+	20% { transform: translateX(-10px); }
+	40% { transform: translateX(10px); }
+	60% { transform: translateX(-10px); }
+	80% { transform: translateX(10px); }
+	100% { transform: translateX(0px); }
+}

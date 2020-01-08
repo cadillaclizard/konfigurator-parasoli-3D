@@ -1,0 +1,143 @@
+// utility
+.flex {
+	display: flex;
+	
+	&.v-center { align-items: center; }
+	&.h-center { justify-content: center; }
+	&.h-space { justify-content: space-between; }
+	&.center {
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+body {
+	@media screen and (max-width: 991px) {
+		& > * { display: none !important; }
+		
+		font-size: 74px;
+		&:after {
+			content: "Oglądaj na desktopie !!!";
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: #f3f3f3;
+		}
+	}
+}
+
+// vars 
+$white: rgb(255, 255, 255);
+$gray-light: rgb(243, 243, 243);
+
+// common
+h1 {
+	font-size: 40px;
+	font-weight: 300;
+	margin: 50px 0 20px 0;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 16px;
+}
+
+[ui-view] {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+// heading
+
+body {
+	background-color: $gray-light;
+	font-family: Dosis;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	background-color: $white;
+	
+	.heading {
+		height: 75px;
+		
+		> .stages {
+			height: 100%;
+			font-size: 16px;
+			font-weight: 500;
+			
+			> div {
+				height: 100%;
+				width: 140px;
+				color: rgb(140, 140, 140);
+				
+				&.active {
+					color: rgb(230, 30, 40);
+					border-bottom: 3px solid;
+				}
+			}
+		}
+		
+		> .cost, > img {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		
+		> img { left: 15px; }
+		> .cost { right: 15px; }
+	}
+}
+
+footer {
+	min-height: 95px;
+	height: 95px;
+	padding: 30px 0;
+	border-top: 1px solid rgb(221, 221, 221);
+	
+	.col-xs-12 {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.button {
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	background: rgb(227, 6, 19);
+	border-radius: 5px;
+	padding: 0 20px;
+	color: white !important;
+	text-decoration: none !important;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	
+	&.arrow-left svg {
+		float: left;
+		transform: rotate(180deg);
+		margin-left: -5px;
+		margin-right: 5px;
+	}
+	
+	svg {
+		width: 12px;
+		margin-left: 5px;
+		margin-right: -5px;
+		height: 35px;
+		line-height: 35px;
+		float: right;
+		
+		path { fill: white; }
+	}
+}

@@ -1,0 +1,108 @@
+@import "lib";
+
+images-options {
+	width: 100%;
+	min-height: 100%;
+
+	> h4 {
+		font-weight: 500;
+
+		&.important {
+			color: $red;
+			text-transform: uppercase;
+		}
+	}
+
+	> #file-select { display: none; }
+
+	> p { margin-bottom: 20px; }
+
+	> hr {
+		margin: 25px 0;
+		width: 100%;
+		border-top-color: $gray-border;
+	}
+
+	> .images {
+		margin: 20px -5px -15px -5px;
+		display: inline-block;
+		width: 100%;
+
+		> .image {
+			width: calc(33.333333% - 10px);
+			margin: 5px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			float: left;
+
+			&.active div {
+				border-color: $red;
+				transform: scale(1.05);
+				pointer-events: none;
+			}
+
+			&:not(.active) div { cursor: pointer; }
+
+			> div {
+				height: 80px;
+				border-radius: 7px;
+				border: 1px solid $gray-border;
+				padding: 3px;
+				display: inline-block;
+				position: relative;
+				transition: all .25s;
+				width: 100%;
+
+				> img {
+					border-radius: 5px;
+					max-height: calc(100% - 10px);
+					max-width: calc(100% - 10px);
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					margin: auto;
+				}
+			}
+
+			> .remove {
+				color: $red;
+				line-height: 35px;
+				cursor: pointer;
+			}
+		}
+	}
+
+	> .image-options {
+		display: flex;
+		justify-content: space-around;
+		margin: 15px 0 25px 0;
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			width: 80px;
+			text-align: center;
+			align-items: center;
+
+			> svg {
+				width: 70px;
+				height: 70px;
+				padding: 15px;
+				border: 1px solid $gray-border;
+				border-radius: 10px;
+				margin-bottom: 5px;
+				transition: all .25s;
+				fill: $red;
+			}
+
+			&:not(.active) { cursor: pointer; }
+			&.active > svg {
+				border-color: $red;
+				padding: 10px;
+			}
+		}
+	}
+}

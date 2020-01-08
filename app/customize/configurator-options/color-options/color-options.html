@@ -1,0 +1,43 @@
+<h4 class="important">Wybierz kolor tkaniny</h4>
+<p>Skorzystaj z naszej palety kolorów tkanin lub zdefiniuj swój własny.</p>
+<hr>
+<h4>Podstawowa paleta kolorów tkanin:</h4>
+<div class="colors">
+	<div class="color" ng-repeat="color in vm.defaultColors" ng-click="::vm.selectColor(color)" ng-class="{ active: vm.selectedColor == color }">
+		<div style="background-color: #{{ ::color.color }};"></div>
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+			width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+			<path d="M39.2,8.4L18.7,34c-0.7,0.7-1.4,1.4-2.4,1.4H16c-0.7,0-1.7-0.3-2.7-1L0.5,23.1c-0.7-1-0.7-2.4,0-3.4c1-0.7,2.4-0.7,3.4,0
+				l12,10.6l3.8-4.5c0-0.3,0-0.3,0-0.3L35.8,5.3c0.7-0.3,1-0.7,1.7-0.7s1,0,1.7,0.7l0,0C40.3,6,40.3,7.3,39.2,8.4z"/>
+		</svg>
+	</div>
+</div>
+<hr>
+<h4>Niestandardowy kolor:</h4>
+<p>Zdefiniuj własny kolor używając składowych CMYK.</p>
+<div class="cmyk">
+	<div class="slider color-c">
+		<slider ng-model="vm.customCMYK.C" min="0" step="1" max="100" slider-tooltip="hide" on-stop-slide="::vm.onCmykSlide()" on-slide="::vm.onCmykSlide()"></slider>
+		<div class="cmyk-value">
+			C: <input tabindex="301" ng-model="vm.customCMYK.C" min="0" max="100" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-change="::vm.onCmykSlide()">
+		</div>
+	</div>
+	<div class="slider color-m">
+		<slider ng-model="vm.customCMYK.M" min="0" step="1" max="100" slider-tooltip="hide" on-stop-slide="::vm.onCmykSlide()" on-slide="::vm.onCmykSlide()"></slider>
+		<div class="cmyk-value">
+			M: <input tabindex="302" ng-model="vm.customCMYK.M" min="0" max="100" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-change="::vm.onCmykSlide()">
+		</div>
+	</div>
+	<div class="slider color-y">
+		<slider ng-model="vm.customCMYK.Y" min="0" step="1" max="100" slider-tooltip="hide" on-stop-slide="::vm.onCmykSlide()" on-slide="::vm.onCmykSlide()"></slider>
+		<div class="cmyk-value">
+			Y: <input tabindex="303" ng-model="vm.customCMYK.Y" min="0" max="100" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-change="::vm.onCmykSlide()">
+		</div>
+	</div>
+	<div class="slider color-k">
+		<slider ng-model="vm.customCMYK.K" min="0" step="1" max="100" slider-tooltip="hide" on-stop-slide="::vm.onCmykSlide()" on-slide="::vm.onCmykSlide()"></slider>
+		<div class="cmyk-value">
+			K: <input tabindex="304" ng-model="vm.customCMYK.K" min="0" max="100" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" ng-change="::vm.onCmykSlide()">
+		</div>
+	</div>
+</div>

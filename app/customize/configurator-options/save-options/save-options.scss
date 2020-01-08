@@ -1,0 +1,25 @@
+@import "lib";
+
+save-options {
+	width: 100%;
+	min-height: 100%;
+	overflow-x: hidden;
+
+
+	> h4 {
+		font-weight: 500;
+
+		&.important {
+			color: $red;
+			text-transform: uppercase;
+		}
+	}
+
+	> p { margin-bottom: 20px; }
+
+	> hr {
+		margin: 25px 0;
+		width: 100%;
+		border-top-color: $gray-border;
+	}
+}

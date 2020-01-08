@@ -1,0 +1,158 @@
+@import "lib";
+
+color-options {
+	width: 100%;
+	min-height: 100%;
+
+	h4 {
+		font-weight: 500;
+
+		&.important {
+			color: $red;
+			text-transform: uppercase;
+		}
+	}
+
+	> .colors {
+		margin: -5px;
+
+		> .color {
+			width: 35px;
+			height: 35px;
+			padding: 2px;
+			border: 1px solid $gray-border;
+			border-radius: 7px;
+			display: inline-block;
+			margin: 5px;
+			cursor: pointer;
+			position: relative;
+
+			&.active > svg {
+				display: block;
+			}
+
+			> svg {
+				display: none;
+				position: absolute;
+				height: 20px;
+				width: 20px;
+				top: 0;
+				right: 0;
+				left: 0;
+				bottom: 0;
+				margin: auto;
+				background: rgba(0, 0, 0, .5);
+				border-radius: 50px;
+				padding: 5px;
+
+				path { fill: $white; }
+			}
+
+			> div {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+			}
+		}
+	}
+
+	> hr {
+		margin: 25px 0;
+		width: 100%;
+		border-top-color: $gray-border;
+	}
+
+	> .cmyk {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+
+		> .slider {
+			display: flex;
+			align-items: center;
+			margin: 7.5px 0;
+
+			&.color-c > div:first-child > .slider.slider-horizontal .slider-track {
+				background: linear-gradient(to right, rgba(0,181,241,0) 0%,rgba(0,181,241,1) 100%,rgba(0,181,241,1) 100%);
+			}
+
+			&.color-m > div:first-child > .slider.slider-horizontal .slider-track {
+				background: linear-gradient(to right, rgba(238,53,150,0) 0%,rgba(238,53,150,1) 100%,rgba(238,53,150,1) 100%);
+			}
+
+			&.color-y > div:first-child > .slider.slider-horizontal .slider-track {
+				background: linear-gradient(to right, rgba(255,251,20,0) 0%,rgba(255,251,20,1) 100%,rgba(255,251,20,1) 100%);
+			}
+
+			&.color-k > div:first-child > .slider.slider-horizontal .slider-track {
+				background: linear-gradient(to right, rgba(0,8,40,0) 0%,rgba(0,8,40,1) 100%,rgba(0,8,40,1) 100%);
+			}
+
+			> div:first-child {
+				flex: 1;
+
+				> .slider.slider-horizontal {
+					border: 1px solid $gray-border;
+					padding: 2px;
+					border-radius: 7px;
+					height: 20px;
+
+					.slider-track {
+						border-radius: 5px;
+						position: relative;
+						height: 100%;
+						top: 0;
+						margin: 0;
+
+						> .slider-handle {
+							width: 7px;
+							height: 26px;
+							border-radius: 3px;
+							margin-top: -6px;
+							margin-left: -2.5px;
+							background: $gray;
+						}
+
+						> .slider-track-low, > .slider-track-high, > .slider-selection { display: none; }
+					}
+				}
+			}
+
+			> .cmyk-value {
+				margin-left: 10px;
+				display: flex;
+				align-items: center;
+
+				> input {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-left: 5px;
+					border: 1px solid $gray-border;
+					border-radius: 7px;
+					padding: 3px 6px;
+					color: $gray;
+					width: 43px;
+				}
+			}
+		}
+	}
+
+	.modal-window {
+		position: fixed;
+
+		.modal-window-content {
+			height: 180px;
+			width: 300px;
+
+			section {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			footer { flex-direction: row-reverse; }
+		}
+	}
+}

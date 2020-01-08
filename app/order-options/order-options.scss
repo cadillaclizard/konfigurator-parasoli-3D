@@ -1,0 +1,241 @@
+@import "lib";
+
+order-options {
+	> .container-full {
+		overflow-y: auto;
+	}
+
+	.container {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		height: calc(100% - 95px);
+
+		> .row {
+			width: 100%;
+
+			&:last-child {
+				padding: 30px 0;
+				min-height: 350px;
+			}
+
+			h2 {
+				font-size: 14px;
+				font-weight: 500;
+				text-transform: uppercase;
+				text-align: left;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+
+			> .count {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				span {
+					font-size: 14px;
+					line-height: 35px;
+				}
+
+				.prices {
+					display: flex;
+					flex-direction: column;
+
+					.content {
+						display: flex;
+
+						& > div {
+							display: flex;
+							flex-direction: column;
+						}
+
+						.titles {
+							width: 100px;
+						}
+
+						.values {
+							color: $red;
+							font-weight: 500;
+						}
+					}
+				}
+			}
+
+			.bases {
+				border-left: 1px solid $gray-border;
+				border-right: 1px solid $gray-border;
+				padding-bottom: 20px;
+			}
+
+			> div > .input {
+				display: flex;
+				align-items: center;
+				user-select: none;
+				justify-content: center;
+
+				> svg {
+					height: 20px;
+					width: 20px;
+					cursor: pointer;
+
+					&:first-of-type.ng-click { animation: shrink .25s; }
+					&:last-of-type.ng-click { animation: grow .25s; }
+
+					path { fill: $red; }
+				}
+
+				input {
+					height: 35px;
+					width: 60px;
+					border: none;
+					background: $white;
+					outline: none !important;
+					text-align: center;
+					-moz-appearance:textfield;
+					margin: 15px;
+					border-radius: 5px;
+					border: 1px solid $gray-border;
+
+					&::-webkit-outer-spin-button,
+					&::-webkit-inner-spin-button {
+						-webkit-appearance: none;
+					}
+				}
+
+				&.disabled {
+					pointer-events: none;
+
+					> svg {
+						pointer-events: none;
+
+						> path { fill: $gray; }
+					}
+				}
+			}
+
+			.umbrella-base {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 20px;
+
+				&:nth-child(odd) { align-items: flex-end; }
+				&.active > div { border-color: $red; }
+
+				> span {
+					width: 100px;
+					font-weight: 500;
+					text-align: center;
+
+					&.red { color: #e20d18; }
+				}
+
+				> div {
+					height: auto;
+					min-height: 100px;
+					width: 100px;
+					background: white;
+					border-radius: 5px;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: space-around;
+					padding: 10px;
+					margin: 10px 0;
+					border: 1px solid transparent;
+					transition: all .25s;
+					border: 1px solid $gray-border;
+					text-align: center;
+
+					&:not(.active) { cursor: pointer; }
+
+					> img {
+						width: 40px;
+						height: 40px;
+						margin-bottom: 5px;
+					}
+				}
+			}
+
+			.radios {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.radio {
+				width: 300px;
+				max-width: 100%;
+
+				input[type="radio"] {
+					display:none;
+
+					&:checked + label {
+						border-color: $red;
+
+						> svg path { fill: $red; }
+
+						.radio-icon {
+							background: $red;
+							border-color: $red;
+
+							> svg { opacity: 1; }
+						}
+					}
+
+					+ label {
+						display: flex;
+						margin-bottom: 20px;
+						background: $white;
+						height: 70px;
+						border-radius: 5px;
+						border: 1px solid $gray-border;
+						padding: 0 20px;
+						align-items: center;
+						transition: all .25s;
+
+						> svg {
+							margin: 0 20px;
+
+							path {
+								transition: all .25s;
+								fill: #999999;
+							}
+						}
+
+						.radio-icon {
+							height: 15px;
+							width: 15px;
+							background: $white;
+							border-radius: 3px;
+							border: 1px solid $gray-border;
+							transition: all .25s;
+
+							> svg {
+								display: block;
+								opacity: 0;
+								height: 100%;
+								width: 100%;
+								padding: 2px;
+								transition: all .25s;
+
+								path { fill: $white; }
+							}
+						}
+
+						.red {
+							color: $red;
+							font-weight: 500;
+						}
+
+						.black {
+							color: $gray;
+							font-weight: 500;
+						}
+					}
+				}
+			}
+		}
+	}
+}

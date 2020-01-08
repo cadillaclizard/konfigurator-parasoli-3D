@@ -1,0 +1,174 @@
+<div class="container-full">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Złóż zamówienie</h1>
+				<h4>Prosimy podać dane do zamówienia.</h4>
+			</div>
+		</div>
+		<form class="row" name="form" novalidate>
+			<div class="col-xs-6 main-column">
+				<div>
+					<div class="line">
+						<h2>dane zamawiającego</h2>
+					</div>
+					<div class="line">
+						<span>* Imię i nazwisko:</span>
+						<input type="text" name="personName" required
+								ng-model="vm.orderForm.person.name" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line">
+						<span>* E-mail:</span>
+						<input type="email" name="personEmail" required
+								ng-model="vm.orderForm.person.mail" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line">
+						<span>* Telefon:</span>
+						<input type="text" name="personPhone" required
+								onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+								ng-model="vm.orderForm.person.phone" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line">
+						<h2 ng-if="vm.orderOptions.delivery != 'personal'">dane dostawy</h2>
+						<h2 ng-if="vm.orderOptions.delivery == 'personal'">miejsce odbioru</h2>
+					</div>
+					<div class="line" ng-if="vm.orderOptions.delivery != 'personal'">
+						<span>* Adres:</span>
+						<input type="text" placeholder="ulica, dom, lokal" name="personStreet" required
+								ng-model="vm.orderForm.person.street" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line" ng-if="vm.orderOptions.delivery != 'personal'">
+						<input type="text" placeholder="kod pocztowy" name="personPostalCode" required
+								ng-model="vm.orderForm.person.postalCode" ng-model-options="{ updateOn: 'blur' }">
+						<input type="text" placeholder="miejscowość" name="personCity" required
+								ng-model="vm.orderForm.person.city" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line" ng-if="vm.orderOptions.delivery != 'personal'">
+						<input type="text" placeholder="kraj" name="personCountry" required
+								ng-model="vm.orderForm.person.country" ng-model-options="{ updateOn: 'blur' }">
+					</div>
+					<div class="line triple delivery-adress" ng-if="vm.orderOptions.delivery == 'personal'">
+						<span>* Adres:</span>
+						<div class="adress">
+							<span class="red">BIURO HANDLOWE PERFECTA</span>
+							<span>ul. Mickiewicza 65</span>
+							<span>51-684 Wrocław</span>
+							<span>pon. – pt: 9:00-17:00,</span>
+							<span>sob. 9:00-13:00</span>
+						</div>
+					</div>
+					<div class="line">
+						<h2>wiadomość do zamówienia</h2>
+					</div>
+					<div class="line textarea">
+						<textarea placeholder="wpisz wiadomość" name="message"
+								ng-model="vm.orderForm.message" ng-model-options="{ updateOn: 'blur' }">
+						</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 main-column">
+				<div>
+					<div class="line">
+						<h2>dane do faktury</h2>
+					</div>
+					<div class="line checkbox">
+						<input type="checkbox" id="invoice" ng-model="vm.orderForm.invoiceNeeded"/>
+						<label for="invoice">
+							<div class="checkbox-icon">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+									<path d="M39.2,8.4L18.7,34c-0.7,0.7-1.4,1.4-2.4,1.4H16c-0.7,0-1.7-0.3-2.7-1L0.5,23.1c-0.7-1-0.7-2.4,0-3.4c1-0.7,2.4-0.7,3.4,0
+										l12,10.6l3.8-4.5c0-0.3,0-0.3,0-0.3L35.8,5.3c0.7-0.3,1-0.7,1.7-0.7s1,0,1.7,0.7l0,0C40.3,6,40.3,7.3,39.2,8.4z"/>
+								</svg>
+							</div>
+							<span>Potrzebuję fakturę VAT</span>
+						</label>
+					</div>
+					<div class="line" ng-class="{ disabled: !vm.orderForm.invoiceNeeded }">
+						<span>* Nazwa firmy:</span>
+						<input type="text" name="companyName" ng-required="vm.orderForm.invoiceNeeded"
+								ng-model="vm.orderForm.company.name" ng-model-options="{ updateOn: 'blur' }"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line" ng-class="{ disabled: !vm.orderForm.invoiceNeeded }">
+						<span>* NIP:</span>
+						<input type="text" name="companyNip" ng-required="vm.orderForm.invoiceNeeded"
+								ng-model="vm.orderForm.company.nip" ng-model-options="{ updateOn: 'blur' }"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line" ng-class="{ disabled: !vm.orderForm.invoiceNeeded }">
+						<span>REGON</span>
+						<input type="text" name="companyRegon"
+								ng-model="vm.orderForm.company.regon" ng-model-options="{ updateOn: 'blur' }"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line" ng-class="{ disabled: !vm.orderForm.invoiceNeeded }">
+						<span>* Adres:</span>
+						<input type="text" placeholder="ulica, dom, lokal, numer biura" name="companyAdres" ng-required="vm.orderForm.invoiceNeeded"
+								ng-model="vm.orderForm.company.street"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line">
+						<input type="text" placeholder="kod pocztowy" name="companyPostalCode" ng-required="vm.orderForm.invoiceNeeded"
+								ng-pattern="/\d{2}[-]\d{3}$/" ng-model="vm.orderForm.company.postalCode" ng-model-options="{ updateOn: 'blur' }"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+						<input type="text" placeholder="miejscowość" name="companyCode" ng-required="vm.orderForm.invoiceNeeded"
+								ng-model="vm.orderForm.company.city" ng-model-options="{ updateOn: 'blur' }"
+								ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line">
+						<input type="text" placeholder="kraj" name="companyCountry" ng-required="vm.orderForm.invoiceNeeded"
+							ng-model="vm.orderForm.company.country" ng-model-options="{ updateOn: 'blur' }"
+							ng-disabled="!vm.orderForm.invoiceNeeded">
+					</div>
+					<div class="line">
+						<h2>dodatkowe pliki</h2>
+					</div>
+					<div class="line triple files">
+						<input id="additional-files" multiple type="file">
+						<div class="additional-files">
+							<div class="info" ng-if="!vm.orderForm.additionalFiles.length">
+								<p class="br">UWAGA! PROSIMY O ZAŁĄCZENIE PLIKÓW ŹRÓDŁOWYCH WEDGŁUG WYTYCZNYCH, W CIĄGU 24H POTWIERDZIMY ZAMÓWIENIE I POPRAWNOŚĆ DANYCH</p>
+								<p class="br">Pliki w formacie <strong>CDR</strong> / <strong>AI</strong> / <strong>PDF</strong> / <strong>JPG</strong>, <strong>TIFF</strong> (w skali 1:1)</p>
+								<p>Rozdzielczość min. <strong>150dpi</strong></p>
+								<p>Kolory w <strong>PANTONE</strong> (max. 6) lub <strong>CMYK</strong></p>
+								<p>Logotypy zapisane <strong>wektorowo</strong> (podane referencje)</p>
+							</div>
+							<div ng-repeat="file in vm.orderForm.additionalFiles" title="{{ file.name }}">
+								<svg enable-background="new 0 0 48 48" height="48px" id="Layer_1" version="1.1" viewBox="0 0 48 48" width="48px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path clip-rule="evenodd" d="M37,47H11c-2.209,0-4-1.791-4-4V5c0-2.209,1.791-4,4-4h18.973  c0.002,0,0.005,0,0.007,0h0.02H30c0.32,0,0.593,0.161,0.776,0.395l9.829,9.829C40.84,11.407,41,11.68,41,12l0,0v0.021  c0,0.002,0,0.003,0,0.005V43C41,45.209,39.209,47,37,47z M31,4.381V11h6.619L31,4.381z M39,13h-9c-0.553,0-1-0.448-1-1V3H11  C9.896,3,9,3.896,9,5v38c0,1.104,0.896,2,2,2h26c1.104,0,2-0.896,2-2V13z M33,39H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18  c0.553,0,1,0.448,1,1C34,38.553,33.553,39,33,39z M33,31H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18c0.553,0,1,0.448,1,1  C34,30.553,33.553,31,33,31z M33,23H15c-0.553,0-1-0.447-1-1c0-0.552,0.447-1,1-1h18c0.553,0,1,0.448,1,1C34,22.553,33.553,23,33,23  z" fill-rule="evenodd"/></svg>
+								<span>{{ file.name }}</span>
+								<a ng-click="vm.deleteFile($index)">usuń</a>
+							</div>
+							<label for="additional-files" class="button">Wybierz plik</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<footer>
+	<div class="container-full">
+		<div class="row">
+			<div class="col-xs-12">
+				<a class="button arrow-left" ui-sref="order-options">
+					Wróć
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path d="M30.9,20L11.3,39.7C11,39.9,10.7,40,10.4,40s-0.7-0.1-0.9-0.3c-0.3-0.2-0.4-0.5-0.4-0.9s0.1-0.7,0.3-0.9l17.8-17.8L9.4,2.2
+						C9.2,2,9.1,1.6,9.1,1.3s0.1-0.7,0.3-0.9c0.3-0.3,0.7-0.4,1-0.4l0,0c0.3,0,0.7,0.1,0.9,0.3L30.9,20z"/>
+					</svg>
+				</a>
+				<a class="button" ng-click="vm.confirmOrder()">
+					Dalej
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path d="M30.9,20L11.3,39.7C11,39.9,10.7,40,10.4,40s-0.7-0.1-0.9-0.3c-0.3-0.2-0.4-0.5-0.4-0.9s0.1-0.7,0.3-0.9l17.8-17.8L9.4,2.2
+						C9.2,2,9.1,1.6,9.1,1.3s0.1-0.7,0.3-0.9c0.3-0.3,0.7-0.4,1-0.4l0,0c0.3,0,0.7,0.1,0.9,0.3L30.9,20z"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,125 @@
+<div ng-if="!vm.models" class="loader">
+	<svg xmlns="http://www.w3.org/2000/svg" width="57" height="57" viewBox="0 0 57 57">
+		<g fill="#e20d18" fill-rule="evenodd">
+			<g transform="translate(1 1)" stroke-width="2">
+				<circle cx="5" cy="50" r="5">
+					<animate attributeName="cy" begin="0s" dur="2.2s" values="50;5;50;50" calcMode="linear" repeatCount="indefinite"></animate>
+					<animate attributeName="cx" begin="0s" dur="2.2s" values="5;27;49;5" calcMode="linear" repeatCount="indefinite"></animate>
+				</circle>
+				<circle cx="27" cy="5" r="5">
+					<animate attributeName="cy" begin="0s" dur="2.2s" from="5" to="5" values="5;50;50;5" calcMode="linear" repeatCount="indefinite"></animate>
+					<animate attributeName="cx" begin="0s" dur="2.2s" from="27" to="27" values="27;49;5;27" calcMode="linear" repeatCount="indefinite"></animate>
+				</circle>
+				<circle cx="49" cy="50" r="5">
+					<animate attributeName="cy" begin="0s" dur="2.2s" values="50;50;5;50" calcMode="linear" repeatCount="indefinite"></animate>
+					<animate attributeName="cx" from="49" to="49" begin="0s" dur="2.2s" values="49;5;27;49" calcMode="linear" repeatCount="indefinite"></animate>
+				</circle>
+			</g>
+		</g>
+	</svg>
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Wybierz model parasola</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<h2>Parasole kwadratowe</h2>
+			<div>
+				<div class="model" ng-repeat="model in vm.models" ng-if="model.shape == 'square'">
+					<div ng-click="vm.selectedModel = model" ng-class="{ active: vm.selectedModel == model }">
+						<img ng-src="{{ model.info.fieldsImgUrl }}">
+						<span>{{ model.title }}<br>{{ model.subtitle }}</span>
+						<span class="red">{{ model.price.base[0].toFixed(2) }} PLN</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<h2>Parasole okrągłe</h2>
+			<div>
+				<div class="model" ng-repeat="model in vm.models" ng-if="model.shape == 'round'">
+					<div ng-click="vm.selectedModel = model" ng-class="{ active: vm.selectedModel == model }">
+						<img ng-src="{{ model.info.fieldsImgUrl }}">
+						<span>{{ model.title }}<br>{{ model.subtitle }}</span>
+						<span class="red">{{ model.price.base[0].toFixed(2) }} PLN</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-window" ng-if="vm.selectedModel">
+		<div class="modal-window-content">
+			<section>
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>{{ vm.selectedModel.title }} {{ vm.selectedModel.subtitle }}</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-7">
+						<h2>wymiary:</h2>
+						<div class="legend">
+							<div class="legend-params">
+								<span ng-repeat="(key, value) in vm.selectedModel.legend.params">{{ key }} - {{ value }}</span>
+							</div>
+							<img ng-src="{{ vm.selectedModel.legend.imageUrl }}">
+						</div>
+					</div>
+					<div class="col-xs-5">
+						<h2>parametry:</h2>
+						<div class="params">
+							<span class="headers">
+								<span>Waga:</span>
+								<span>Podst. Kolor</span>
+								<span>Materiał:</span>
+							</span>
+							<span class="values">
+								<span>{{ vm.selectedModel.params.weight }}</span>
+								<span>{{ vm.selectedModel.params.defaultColor }}</span>
+								<span>{{ vm.selectedModel.params.material }}</span>
+							</span>
+						</div>
+					</div>
+					<div class="col-xs-12 info">
+						<div class="info-item">
+							<span class="heading">Stelaż</span>
+							<span>{{ vm.selectedModel.info.frame }}</span>
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.openingImgUrl">
+							<span class="heading">Otwieranie</span>
+							<img ng-src="{{ vm.selectedModel.info.openingImgUrl }}">
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.mechanismImgUrl">
+							<span class="heading">Mechanizm</span>
+							<img ng-src="{{ vm.selectedModel.info.mechanismImgUrl }}">
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.topImgUrl">
+							<span class="heading">Szczyt</span>
+							<img ng-src="{{ vm.selectedModel.info.topImgUrl }}">
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.frillImgUrl">
+							<span class="heading">Falbana</span>
+							<img ng-src="{{ vm.selectedModel.info.frillImgUrl }}">
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.fieldsImgUrl">
+							<span class="heading">Pola</span>
+							<img ng-src="{{ vm.selectedModel.info.fieldsImgUrl }}">
+						</div>
+						<div class="info-item" ng-if="!!vm.selectedModel.info.baseImgUrl">
+							<span class="heading">Podstawa</span>
+							<img ng-src="{{ vm.selectedModel.info.baseImgUrl }}">
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer>
+				<span ng-click="vm.selectedModel = null">anuluj</span>
+				<a class="button" ng-click="vm.appService.setModel(vm.selectedModel)" ui-sref="customize">Wybieram</a>
+			</footer>
+		</div>
+	</div>
+</div>

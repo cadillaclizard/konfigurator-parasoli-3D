@@ -1,0 +1,255 @@
+@import "lib";
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+svg { pointer-events: bounding-box; }
+
+a {
+	outline: none !important;
+}
+
+.loader {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: $gray-background;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	pointer-events: none;
+
+	&.loader-transparent { background: rgba(243, 243, 243, 0.5); }
+
+	&.ng-leave {
+		opacity: 1;
+		transition: opacity 1s;
+
+		&.ng-leave-active {
+			opacity: 0;
+		}
+	}
+
+	> svg {
+		height: 150px;
+		width: 150px;
+	}
+}
+
+app {
+	header {
+		background-color: $white;
+		border-bottom: 1px solid $gray-border;
+
+		.container-full { margin: 0 30px; }
+
+		.heading {
+			height: 75px;
+			position: relative;
+			text-align: center;
+
+			img {
+				height: 30px;
+				position: absolute;
+				left: 15px;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+			}
+
+			> price {
+				position: absolute;
+				right: 15px;
+				top: 0;
+				bottom: 0;
+				justify-content: center;
+			}
+
+			> .stages {
+				font-size: 16px;
+				font-weight: 500;
+				display: inline-flex;
+				height: 100%;
+
+				> a {
+					color: $gray;
+					padding: 0 20px;
+					display: flex;
+					align-items: center;
+					padding-top: 2px;
+					border-bottom: 2px solid transparent;
+					transition: all .25s;
+					text-decoration: none;
+
+					&:not(.active):hover {
+						border-bottom-color: $gray-border;
+					}
+
+					&.active {
+						color: $red;
+						border-bottom-color: $red;
+						pointer-events: none;
+						cursor: default;
+
+						~ a {
+							pointer-events: none;
+							cursor: default;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	> [ui-view] {
+		height: calc(100vh - 75px);
+
+		> * {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+
+			> .container, > .container-full { flex: 1; }
+		}
+	}
+}
+
+body {
+	background-color: $gray-background;
+	font-family: Dosis;
+	overflow: hidden;
+
+	& > .responsive-alert { display: none; }
+
+	@media screen and (max-width: 991px) {
+		& > * { display: none !important; }
+
+		& > .responsive-alert {
+			padding: 30px 20px;
+			display: flex!important;
+			flex-direction: column;
+			margin: auto;
+			width: 300px;
+			text-align: center;
+			height: 100vh;
+			justify-content: center;
+			align-items: center;
+
+			> h1 { font-size: 30px; margin: 0; }
+			> h2 { font-size: 18px; font-weight: 400; margin: 60px 0; }
+			> img { margin-bottom: 20px; }
+			> p { margin: 0; }
+			>svg {
+				height: 100px;
+				width: 100px;
+				margin-bottom: 10px;
+
+				path { fill: $red; }
+			}
+		}
+	}
+
+	footer {
+		height: 95px;
+		padding: 30px 0;
+		border-top: 1px solid $gray-border;
+
+		.container-full { margin: 0 30px; }
+
+		.col-xs-12 {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+}
+
+h1 {
+	font-size: 40px;
+	font-weight: 300;
+	margin: 30px 0;
+	text-align: center;
+
+	+ h4 {
+		text-align: center;
+		margin-top: -15px;
+		margin-bottom: 30px;
+	}
+}
+
+h3 {
+	font-weight: 400;
+	font-size: 18px;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.button {
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	background: $red;
+	border-radius: 7px;
+	padding: 0 15px;
+	color: $white !important;
+	text-decoration: none !important;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+
+	&.arrow-left svg {
+		float: left;
+		transform: rotate(180deg);
+		margin-left: -5px;
+		margin-right: 5px;
+	}
+
+	svg {
+		width: 12px;
+		margin-left: 5px;
+		margin-right: -5px;
+		height: 35px;
+		float: right;
+
+		path { fill: $white; }
+	}
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+@keyframes wiggle {
+	0% { transform: translateX(0); }
+	25% { transform: translateX(-2px); }
+	50% { transform: translateX(2px); }
+	100% { transform: translateX(0); }
+}
+
+@keyframes rotate {
+	from { transform: rotate(0); }
+	to { transform: rotate(360deg); }
+}
+
+@keyframes shrink {
+	0% { transform: scale(1); }
+	50% { transform: scale(0.9); }
+	100% { transform: scale(1); }
+}
+
+@keyframes grow {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
